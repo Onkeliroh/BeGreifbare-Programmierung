@@ -22,7 +22,7 @@ void draw()
   switch (state)
   {
     case 0:
-      init_game();
+      init_menu();
       break;
     case 1:
       run_game();
@@ -31,7 +31,7 @@ void draw()
   }
 }
 
-void init_game()
+void init_menu()
 {
   background(color(113,89,89));
   noFill();
@@ -71,10 +71,22 @@ boolean rectOver_check(int x, int y, int w, int h)
 
 void mousePressed()
 {
-  if (rectOver)
+  if (rectOver && state == 0)
   {  
     println("CLICK");  
     ++state;
-  }   
+    rectOver = false;
+    init_game();
+  }
+  else if (mouseButton == LEFT && state == 1)
+  {
+    println("Run"); 
+  }
+  else if (mouseButton == RIGHT && state == 1)
+  {
+    println("Jump");
+    level_ini.fig.jumping = true;
+  }  
 }
+
 
