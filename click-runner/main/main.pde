@@ -86,11 +86,12 @@ void mousePressed()
   }
   else if (mouseButton == LEFT && state == 1)
   {
-    println("Run"); 
+    println("Run");
+    Click = millis();
   }
   else if (mouseButton == RIGHT && state == 1)
   {
-    println("Jump");
+    //println("Jump");
     level_ini.fig.jumping = true;
   }  
 }

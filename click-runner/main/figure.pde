@@ -2,6 +2,7 @@ class figure
 {
   int posX;
   int posY;
+  int current_posY;
   int weight;
   
   boolean jumping = false;
@@ -14,6 +15,7 @@ class figure
   {
     posX = x;
     posY = y;
+    current_posY = y;
     weight = 20;
     fig_color = color(25,252,25);
   }
@@ -24,22 +26,45 @@ class figure
     noStroke();
     if ( !jumping ) 
     {
-      rect(posX-(weight),posY-(weight),weight,weight);
+      rect(posX,posY,-weight,-weight);
+      current_posY = posY;
     }
     else
     {
       if (jump_frame >= jump_count/2)
-        rect(posX-(weight),posY-(weight)-(jump_count-jump_frame),weight,weight);
+      {
+        rect(posX,posY-(jump_count-jump_frame),-weight,-weight);
+        current_posY = posY-(jump_count-jump_frame);
+      }
       else
-        rect(posX-(weight),posY-(weight)-(jump_frame),weight,weight);
+      {
+        rect(posX,posY-(jump_frame),-weight,-weight);
+        current_posY = posY-jump_frame;
+      }
       
         
        if ( jump_frame == jump_count )
        { 
           jumping = false;
           jump_frame = 0;
+          current_posY = posY;
        }
        jump_frame += 2;
     }
+  }
+  
+  int get_posX()
+  {
+    return posX - weight;
+  }
+  
+  int get_posY()
+  {
+    return current_posY;
+  }
+  
+  int get_weight()
+  {
+    return weight;
   }
 }

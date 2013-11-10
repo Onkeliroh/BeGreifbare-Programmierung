@@ -8,7 +8,10 @@ class obstacle
   //t = triangle
   //r = rectangle
   //l = veritcal line
+  //f = finish
   char form;
+  
+  color c = color(random(255),random(255),random(255));
 
   obstacle(int x, int y, int w, char f)
   {
@@ -22,6 +25,7 @@ class obstacle
   
   void draw_obstacle()
   {
+    fill(c);
     switch (form)
     {
       case 't':
@@ -34,6 +38,7 @@ class obstacle
         line(bottomX,bottomY,bottomX,bottomY-weight);
         break;
     }
+    noFill();
   }
   
   char get_form()
@@ -54,5 +59,12 @@ class obstacle
   int get_weight()
   {
     return weight;
+  }
+  
+  void print_obstacle()
+  {
+    println("X: "+bottomX);
+    println("Y: "+bottomY);
+    println("Weight: "+weight); 
   }
 }
