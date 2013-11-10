@@ -7,6 +7,7 @@ boolean rectOver = false;
 color rect_click_color = color(186,242,239);
 color rect_default_color = color(252,227,227);
 color rect_current_color = rect_default_color;
+color text_default_color = color(0,0,0);
 
 color mouse_over_color = color(206,187,187); 
 
@@ -34,10 +35,11 @@ void draw()
 void init_menu()
 {
   background(color(113,89,89));
-  noFill();
+  fill(text_default_color);
   textSize(32);
   textAlign(CENTER);
   text(title,width/2,50);
+  
   
   int rectX = (width/2) -100;
   int rectY = (height/2) -25;
@@ -55,6 +57,10 @@ void init_menu()
   
   fill(rect_current_color);
   rect(rectX,rectY,rectWidth,rectHeight,5);  
+  
+  textSize(20);
+  fill(text_default_color);
+  text("START",width/2,height/2+10);
 }
 
 boolean rectOver_check(int x, int y, int w, int h)

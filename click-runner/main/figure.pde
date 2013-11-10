@@ -5,7 +5,7 @@ class figure
   int weight;
   
   boolean jumping = false;
-  int jump_count = 90;
+  int jump_count = 180;
   int jump_frame = 0;
   
   color fig_color;
@@ -24,14 +24,14 @@ class figure
     noStroke();
     if ( !jumping ) 
     {
-      rect(posX-(weight/2),posY-(weight/2),weight,weight);
+      rect(posX-(weight),posY-(weight),weight,weight);
     }
     else
     {
       if (jump_frame >= jump_count/2)
-        rect(posX-(weight/2),posY-(weight/2)-(jump_count-jump_frame),weight,weight);
+        rect(posX-(weight),posY-(weight)-(jump_count-jump_frame),weight,weight);
       else
-        rect(posX-(weight/2),posY-(weight/2)-(jump_frame),weight,weight);
+        rect(posX-(weight),posY-(weight)-(jump_frame),weight,weight);
       
         
        if ( jump_frame == jump_count )
@@ -39,7 +39,7 @@ class figure
           jumping = false;
           jump_frame = 0;
        }
-       ++jump_frame;
+       jump_frame += 2;
     }
   }
 }

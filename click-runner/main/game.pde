@@ -2,6 +2,7 @@ color bg_color = color(255,255,255);
 color bg_game_over = color (200,10,10);
 
 int game_state = 0;
+float speed = 1;
 
 level level_ini;
 
@@ -31,9 +32,9 @@ void play()
   background(bg_color);
   show_fps();
   
-//  textAlign(CENTER);
-//  textSize(40);
-//  text("HELLO WORLD",width/2,height/2);
+  textAlign(CENTER);
+  textSize(32);
+  text(title,width/2,30);
 
   level_ini.draw_level();
 }
