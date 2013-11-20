@@ -2,10 +2,17 @@ import java.lang.Math;
 import ddf.minim.*;
 import ddf.minim.ugens.*;
 
+// Life is colorful :P
+// Daniel Pollack
+// controlls:
+//  Key: r = reset
+//  Mousebutton: Left = draw Block
+//  Mousebutton: Right = create 'Pulse'
+
 Minim minim = new Minim(this);
 AudioOutput out = minim.getLineOut();
 
-color background_color = color (180,180,180);
+color background_color = color (230,230,230);
 
 int divisor_x = 40;
 int divisor_y = 40;
@@ -78,5 +85,14 @@ void mouseClicked()
     int y = floor((float) (mouseY / divisor_y));
     
     block_array.add( new block(x*divisor_x,y*divisor_y,divisor_x,divisor_y) );
+  }
+}
+
+void keyPressed()
+{
+  if (key == 'r' )
+  {
+    circle_array.clear();
+    block_array.clear();
   }
 }

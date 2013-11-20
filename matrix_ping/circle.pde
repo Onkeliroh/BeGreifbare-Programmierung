@@ -12,8 +12,10 @@ class circle{
 
   public circle(int x_tmp, int y_tmp)
   {
+    stroke(circle_color);
     x = x_tmp;
     y = y_tmp;
+    noStroke();
   }
   
   public circle(int x_tmp, int y_tmp, int h)
@@ -21,7 +23,7 @@ class circle{
     x = x_tmp;
     y = y_tmp;
     heir = h;
-    r = 7;
+    r = 10;
     circle_color = color ((180*h)%255,(60*h)%255,(180*h)%255);
   }
   

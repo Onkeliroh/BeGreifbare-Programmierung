@@ -5,6 +5,8 @@ class block{
   public int x,y,w,h;
   int trim = 3;
   color c = color (random(255),random(255),random(255));
+  color ch = color (red(c)+(250-red(c)),green(c)+(250-green(c)),blue(c)+(250-blue(c)));
+  color cc = c;
 
 //  Minim minim = new Minim(this);
   
@@ -18,7 +20,8 @@ class block{
   
   void draw_block()
   {
-    fill(c);
+    noStroke();
+    fill(cc);
     rect(x,y,w,h,trim);
     noFill(); 
   }
@@ -26,6 +29,9 @@ class block{
   void ping()
   {    
     // given start time, duration, and frequency
+    cc = ch;
+    draw_block();
+    cc = c;
     out.playNote( 0.0, 0.1, (y+h/2)*2 );
   }
 }
