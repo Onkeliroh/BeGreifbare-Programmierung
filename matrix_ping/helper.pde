@@ -37,4 +37,15 @@ boolean is_rect_in_ellipse(float rx, float ry, float rw, float rh, float cx, flo
   return cornerDistance <= pow(cr, 2);
 }
 
+boolean is_circle_in_ellipse(float rx, float ry, float rw, float rh, float cx, float cy, float cr)
+{
+  float box_x = rx + 20;//rw/2;
+  float box_y = ry + 20;//rh/2;
+  float dis_r_c = floor(sqrt(sq(box_x-cx)+sq(box_y-cy)));
+  
+  if ( (dis_r_c - cr ) < 2 && (dis_r_c - cr > -2))
+    println("bx: " + box_x + " by: " + box_y + " cx: " + cx + " cy: " + cy + " dist: " + dis_r_c);
+  return ( (dis_r_c - cr/2 ) < 3 && (dis_r_c - cr/2 > -3)); 
+}
+
 

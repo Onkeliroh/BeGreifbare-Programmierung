@@ -2,9 +2,11 @@ class circle{
 
  public int x,y;
  public int r=0;
+ public int heir = 0;
  float alpha = 200;
  float r_dec = 1;
  color circle_color = color (0,0,180);
+ 
  
  
 
@@ -12,6 +14,15 @@ class circle{
   {
     x = x_tmp;
     y = y_tmp;
+  }
+  
+  public circle(int x_tmp, int y_tmp, int h)
+  {
+    x = x_tmp;
+    y = y_tmp;
+    heir = h;
+    r = 7;
+    circle_color = color ((180*h)%255,(60*h)%255,(180*h)%255);
   }
   
   public void set_color(color c)
@@ -34,6 +45,7 @@ class circle{
       r_tmp -= r_dec;
     }
     r += 5;
+    println(r);
   }
 
 }

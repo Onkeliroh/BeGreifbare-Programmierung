@@ -26,6 +26,6 @@ class block{
   void ping()
   {    
     // given start time, duration, and frequency
-    out.playNote( 0.0, 0.01, x );
+    out.playNote( 0.0, 0.1, (y+h/2)*2 );
   }
 }

@@ -5,10 +5,11 @@ import ddf.minim.ugens.*;
 Minim minim = new Minim(this);
 AudioOutput out = minim.getLineOut();
 
-color background_color = color (255,255,255);
+color background_color = color (180,180,180);
 
 int divisor_x = 40;
 int divisor_y = 40;
+int max_heir = 3;
 
 ArrayList<circle> circle_array = new ArrayList<circle>();
 ArrayList<block> block_array = new ArrayList<block>();
@@ -55,8 +56,13 @@ void check_for_ping()
   for ( int i = 0 ; i < block_array.size() ; ++i )
     for ( int j = 0 ; j < circle_array.size() ; ++j )
     {
-      if ( is_rect_in_ellipse(block_array.get(i).x,block_array.get(i).y,block_array.get(i).w,block_array.get(i).h,circle_array.get(i).x,circle_array.get(i).y,circle_array.get(i).r) )
+      //if ( is_rect_in_ellipse(block_array.get(i).x,block_array.get(i).y,block_array.get(i).w,block_array.get(i).h,circle_array.get(i).x,circle_array.get(i).y,circle_array.get(i).r) )
+      if ( is_circle_in_ellipse(block_array.get(i).x,block_array.get(i).y,block_array.get(i).w,block_array.get(i).h,circle_array.get(j).x,circle_array.get(j).y,circle_array.get(j).r) )
+      {
         block_array.get(i).ping();
+        if ( circle_array.get(j).heir < max_heir )
+          circle_array.add(new circle(block_array.get(i).x+divisor_x/2,block_array.get(i).y+divisor_y/2,++circle_array.get(j).heir));
+      }
     }
 }
 
